@@ -170,6 +170,10 @@ for (const [path, expectedStatus] of [
   ['public/media/finance-core-demo-original-poster.jpg', 1],
   ['public/media/mutation-portal-demo.mp4', 1],
   ['public/media/mutation-portal-demo-poster.jpg', 1],
+  ['public/media/stackshot-film-en.mp4', 1],
+  ['public/media/stackshot-film-en-poster.jpg', 1],
+  ['public/media/stackshot-film-es.mp4', 1],
+  ['public/media/stackshot-film-es-poster.jpg', 1],
   ['public/media/unpublished-recording.mp4', 0],
   ['personal-photo.JPG', 0],
 ]) {

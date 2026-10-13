@@ -181,6 +181,7 @@ export const cvPdfPath = (lang: Lang) =>
 const CASE_PATHS: Record<string, string> = {
   'sars-cov-2': '/work/sars-cov-2/',
   'youtube-transcriber': '/work/youtube-transcriber/',
+  stackshot: '/work/stackshot/',
   'financial-architecture': '/work/finance-core/',
 }
 

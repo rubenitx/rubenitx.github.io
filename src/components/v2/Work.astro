@@ -38,6 +38,7 @@ const BADGE_LABELS: Record<'live' | 'private' | 'coming-soon', UiKey> = {
 }
 
 const badgeLabel = (badge: keyof typeof BADGE_LABELS) => t(lang, BADGE_LABELS[badge])
+const linkLabel = (kind: 'app' | 'site') => t(lang, kind === 'site' ? 'v2.work.site' : 'v2.work.app')
 const caseLink = (projectKey: string, origin: 'project-carousel' | 'project-deck') => {
   const path = casePath(projectKey, lang)
   return path ? `${path}?from=${origin}` : null
@@ -255,9 +256,9 @@ const caseLink = (projectKey: string, origin: 'project-carousel' | 'project-deck
                     </a>
                   )}
                   {p.link && (
-                    <a href={p.link} target="_blank" rel="noopener noreferrer" class="project-action project-action-demo" aria-label={`${t(lang, 'v2.work.app')}: ${p.title}`}>
+                    <a href={p.link} target="_blank" rel="noopener noreferrer" class="project-action project-action-demo" aria-label={`${linkLabel(p.linkKind)}: ${p.title}`}>
                       <span class="project-action-icon"><Icon name="play" class="h-5 w-5" /></span>
-                      <span><small>{t(lang, 'v2.work.visit')}</small><strong>{t(lang, 'v2.work.app')}</strong></span>
+                      <span><small>{t(lang, 'v2.work.visit')}</small><strong>{linkLabel(p.linkKind)}</strong></span>
                       <Icon name="external" class="project-action-arrow h-4 w-4" />
                     </a>
                   )}

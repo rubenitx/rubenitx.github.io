@@ -1,13 +1,13 @@
 {
   "version": 1,
-  "chromium": "141.0.7390.37",
+  "chromium": "151.0.7922.34",
   "documents": [
     {
       "lang": "en",
       "file": "CV_RubenMartinez_EN.pdf",
-      "sha256": "61f0840aa4998553f10d73d1f403004a4141af09f2fc292bfaf14a3f9ef969b2",
+      "sha256": "6e771523c2bb2a97ec67639f4a920ef7fe24e6af14b2d86c899f4878fc71c559",
       "documentSha256": "46fd926352e536aec5085a364736245c61975a91d79dae88574ba41860b17947",
-      "bytes": 196802,
+      "bytes": 169853,
       "pages": 1,
       "words": 218,
       "tagged": true,
@@ -21,11 +21,11 @@
     {
       "lang": "es",
       "file": "CV_RubenMartinez_ES.pdf",
-      "sha256": "732df8f4417631328964ef29ccb815634c06eca535f2557229f6994cf33078fe",
-      "documentSha256": "ad2b9301fddbf010ef0414e5a86d3d9f2270c5199671729fc1be845fed98db43",
-      "bytes": 205996,
+      "sha256": "555ceb8d25542ecac6f510c6b59f98923e086338ed4673db818db7d4198dac5d",
+      "documentSha256": "a8a4c8e0bdec6cbb38703aa66305dfdcbc8b3d2ff67198f77e81e80b0755ffbe",
+      "bytes": 179312,
       "pages": 1,
-      "words": 235,
+      "words": 237,
       "tagged": true,
       "title": "CV de Rubén Martínez Bernabe — Desarrollador Java y React",
       "textChecks": 41,

@@ -13,6 +13,7 @@ const { lang, projectKey, demo, sectionNumber } = Astro.props
 const isTranscriber = projectKey === 'youtube-transcriber'
 const isFinance = projectKey === 'financial-architecture'
 const isMutation = projectKey === 'sars-cov-2'
+const isStackshot = projectKey === 'stackshot'
 ---
 
 <section id="demo" class="mt-12 scroll-mt-24 case-section case-demo reveal" aria-labelledby="case-demo">
@@ -21,6 +22,7 @@ const isMutation = projectKey === 'sars-cov-2'
     <div class="case-video-frame">
       {isTranscriber && <div class="case-demo-toolbar" aria-hidden="true"><span class="case-demo-dots"><i /><i /><i /></span><span>yt.rubenitx.me</span><span>1080P / DEMO</span></div>}
       {isFinance && <div class="case-demo-toolbar"><span class="case-demo-dots" aria-hidden="true"><i /><i /><i /></span><span>{t(lang, 'v2.finance.workspace')}</span><Icon name="lock" class="h-3 w-3" /></div>}
+      {isStackshot && <div class="case-demo-toolbar"><span class="case-demo-dots" aria-hidden="true"><i /><i /><i /></span><span>{t(lang, 'v2.stackshot.workspace')}</span><span>1080P60 / 1:38</span></div>}
       {isMutation && <div class="case-demo-toolbar"><span class="case-demo-dots" aria-hidden="true"><i /><i /><i /></span><span>{t(lang, 'v2.mutation.workspace')}</span><Icon name="microscope" class="h-3 w-3" /></div>}
       <video
         controls

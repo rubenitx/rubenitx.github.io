@@ -3,7 +3,7 @@
     "id": "en:financial-architecture",
     "key": "financial-architecture",
     "lang": "en",
-    "order": 2,
+    "order": 3,
     "title": "Finance Core",
     "eyebrow": "Private application",
     "description": "One workspace for accounts, spending, savings goals and crypto holdings. A private personal-finance application, presented through a real local walkthrough with synthetic data.",
@@ -64,7 +64,7 @@
     "id": "es:financial-architecture",
     "key": "financial-architecture",
     "lang": "es",
-    "order": 2,
+    "order": 3,
     "title": "Finance Core",
     "eyebrow": "Aplicación privada",
     "description": "Cuentas, gastos, objetivos de ahorro y posiciones cripto en un mismo espacio. Una aplicación privada de finanzas personales, presentada con un recorrido local real y datos sintéticos.",
@@ -125,7 +125,7 @@
     "id": "en:youtube-transcriber",
     "key": "youtube-transcriber",
     "lang": "en",
-    "order": 1,
+    "order": 2,
     "title": "YouTube Transcriber",
     "eyebrow": "Web App",
     "description": "Turn a public YouTube video into timestamped text you can read, translate and reuse. A working app with public frontend and API code, no account required.",
@@ -198,7 +198,7 @@
     "id": "es:youtube-transcriber",
     "key": "youtube-transcriber",
     "lang": "es",
-    "order": 1,
+    "order": 2,
     "title": "YouTube Transcriber",
     "eyebrow": "Aplicación Web",
     "description": "Convierte un vídeo público de YouTube en texto con marcas de tiempo para leer, traducir y reutilizar. Una aplicación operativa con código público de frontend y API, sin crear una cuenta.",
@@ -268,10 +268,172 @@
     }
   },
   {
+    "id": "en:stackshot",
+    "key": "stackshot",
+    "lang": "en",
+    "order": 1,
+    "title": "Stackshot",
+    "eyebrow": "Desktop App",
+    "description": "A free, open source screenshot tool and screen recorder for Windows. Press Print Screen, select, and the capture is already copied, waiting as a floating thumbnail to annotate, drag or share.",
+    "status": "Live on stackshot.rubenitx.me",
+    "badge": "live",
+    "featured": true,
+    "inCv": false,
+    "tech": ["C#", ".NET Framework", "WinForms", "WPF", "FFmpeg", "Windows OCR"],
+    "domains": [],
+    "link": "https://stackshot.rubenitx.me/",
+    "linkKind": "site",
+    "github": [
+      { "label": "App", "href": "https://github.com/rubenitx/stackshot" }
+    ],
+    "image": "./../assets/projects/stackshot.png",
+    "imageAlt": "Illustration of Stackshot: a Print Screen, selection, thumbnail, editor and clipboard flow with a video branch, above a selection over synthetic payment details whose IBAN and e-mail are covered, next to a floating thumbnail ready to copy or save.",
+    "deep": null,
+    "caseStudy": {
+      "problem": "Sharing a piece of the screen usually means a chain of small chores: capture, open an editor, crop, mark it up, hide what should not be seen, save, find the file and attach it. Stackshot puts that chain behind one key on Windows: the capture is already on the clipboard and waits as a floating thumbnail, so annotating, covering sensitive data or recording a short video stays one step away.",
+      "decisions": [
+        {
+          "title": "One small executable, nothing else to install",
+          "body": "The app is written in C# on the .NET Framework that ships with Windows 10 and 11, with WinForms and WPF, and it compiles with the C# compiler included in Windows through a PowerShell script. The result is a single 2.2 MB executable that runs without admin rights, plus an MSI package for managed installs."
+        },
+        {
+          "title": "The capture is ready before you decide",
+          "body": "Every screenshot is copied to the clipboard as soon as it is taken and appears as a floating thumbnail, while the PNG is written in the background. The area picker redraws only the region that changed, about 1.6 ms per pointer move at 1080p in the project's own measurements."
+        },
+        {
+          "title": "Text and sensitive data stay on the PC",
+          "body": "The text inside captures is read with the OCR built into Windows. It feeds the history search and the detection of ID numbers, IBANs, cards, e-mails and phone numbers, which checks control digits so invoice numbers and amounts are left alone. There are no accounts, cloud services or telemetry."
+        },
+        {
+          "title": "Recordings that check themselves",
+          "body": "Video and GIF rely on FFmpeg, downloaded only the first time you record, after you accept, and verified against a SHA-256 hash kept in the source. The lossless Cine master is decoded after recording and compared frame by frame, and every MP4 export is checked before it is handed over."
+        },
+        {
+          "title": "Updates that cannot be swapped",
+          "body": "An update installed from the app must match the SHA-256 that GitHub reports and carry an RSA-PSS signature made with a key that is never stored in the repository. Releases are compiled by GitHub Actions and published with a checksum and a signed provenance attestation."
+        },
+        {
+          "title": "Documentation rendered from the real app",
+          "body": "The README screenshots, the feature clips and the film are produced by scripts from real app screens over synthetic content. When the interface changes, the media is generated again instead of being retouched by hand."
+        }
+      ],
+      "limits": [
+        "Windows 10 and 11 only. The interface is in Spanish today; an English translation is planned.",
+        "The executable is not code-signed yet, so SmartScreen warns the first time it runs. Each release publishes a SHA-256 checksum and a provenance attestation to check what you downloaded.",
+        "Sensitive-data detection can miss data. Automatic covering is off by default, and every result should be reviewed before it is shared.",
+        "Text recognition relies on the OCR built into Windows, so its accuracy depends on the system and on the image. The history's text index can be turned off or deleted.",
+        "Recording needs FFmpeg, which is not bundled and is distributed under its own GPL license. Apart from that download, the network is used only for update checks against the GitHub Releases API, which can be turned off.",
+        "Timings such as 1.6 ms per pointer move or about 0.4 s to cover data at 1080p are the project's own measurements, not an independent benchmark."
+      ],
+      "outcome": "The deliverable is a working Windows app, published as an executable and an MSI package on GitHub Releases, with its source under the MIT license and a website that presents it with the full film. No download, adoption or time-saving figures are claimed.",
+      "verification": [
+        "Download Stackshot from its website or from GitHub Releases, compare the SHA-256 checksum and run it without admin rights.",
+        "Press Print Screen, select an area and paste it with Ctrl+V. Open the thumbnail in the editor and try the sensitive-data button on a document with synthetic data.",
+        "Inspect the App repository for capture, OCR, recording and update verification, and each release for its SHA-256 checksum and provenance attestation."
+      ],
+      "demo": {
+        "src": "/media/stackshot-film-en.mp4",
+        "poster": "/media/stackshot-film-en-poster.jpg",
+        "caption": "The official 1:38 film, the same cut as on stackshot.rubenitx.me. It is an edited montage: real app screens over synthetic content, animated scene by scene, with original synthesized music and no voice-over. Playback starts only when you press play. It is not a recording of a single session and not a benchmark.",
+        "steps": [
+          "Press Print Screen and choose one of the seven capture modes.",
+          "Select an area: the capture is copied and waits as a floating thumbnail.",
+          "Annotate it, cover sensitive data or capture a whole scrolling page.",
+          "Record MP4 or GIF with sound, then find any capture later by the text it contains."
+        ],
+        "tracks": [
+          { "lang": "en", "label": "English", "src": "/media/stackshot-film.en.vtt" },
+          { "lang": "es", "label": "Español", "src": "/media/stackshot-film.es.vtt" }
+        ]
+      }
+    }
+  },
+  {
+    "id": "es:stackshot",
+    "key": "stackshot",
+    "lang": "es",
+    "order": 1,
+    "title": "Stackshot",
+    "eyebrow": "App de escritorio",
+    "description": "Herramienta gratuita y de código abierto para capturar y grabar la pantalla en Windows. Pulsas Impr Pant, seleccionas y la captura ya está copiada, esperando como miniatura flotante para marcarla, arrastrarla o compartirla.",
+    "status": "Activo en stackshot.rubenitx.me",
+    "badge": "live",
+    "featured": true,
+    "inCv": false,
+    "tech": ["C#", ".NET Framework", "WinForms", "WPF", "FFmpeg", "Windows OCR"],
+    "domains": [],
+    "link": "https://stackshot.rubenitx.me/",
+    "linkKind": "site",
+    "github": [
+      { "label": "App", "href": "https://github.com/rubenitx/stackshot" }
+    ],
+    "image": "./../assets/projects/stackshot-es.png",
+    "imageAlt": "Ilustración de Stackshot: flujo de Impr Pant, selección, miniatura, editor y portapapeles con una rama de vídeo, sobre una selección de datos de pago sintéticos con el IBAN y el correo tapados, junto a una miniatura flotante lista para copiar o guardar.",
+    "deep": null,
+    "caseStudy": {
+      "problem": "Compartir un trozo de pantalla suele ser una cadena de pequeñas tareas: capturar, abrir un editor, recortar, marcar, tapar lo que no debe verse, guardar, buscar el archivo y adjuntarlo. Stackshot pone esa cadena detrás de una tecla en Windows: la captura ya está en el portapapeles y espera como miniatura flotante, así que marcarla, tapar datos sensibles o grabar un vídeo corto queda a un paso.",
+      "decisions": [
+        {
+          "title": "Un solo ejecutable pequeño, nada más que instalar",
+          "body": "La aplicación está escrita en C# sobre el .NET Framework que ya trae Windows 10 y 11, con WinForms y WPF, y se compila con el compilador de C# incluido en Windows mediante un script de PowerShell. El resultado es un único ejecutable de 2,2 MB que funciona sin permisos de administrador, y un paquete MSI para instalaciones gestionadas."
+        },
+        {
+          "title": "La captura está lista antes de que decidas",
+          "body": "Cada captura se copia al portapapeles en cuanto se toma y aparece como miniatura flotante, mientras el PNG se escribe en segundo plano. El selector de área solo vuelve a dibujar la zona que cambia: unos 1,6 ms por movimiento del puntero a 1080p, según las mediciones del propio proyecto."
+        },
+        {
+          "title": "El texto y los datos sensibles no salen del equipo",
+          "body": "El texto de las capturas se lee con el OCR integrado en Windows. Alimenta la búsqueda del historial y la detección de DNI, IBAN, tarjetas, correos y teléfonos, que comprueba los dígitos de control para no tocar números de factura ni importes. No hay cuentas, servicios en la nube ni telemetría."
+        },
+        {
+          "title": "Grabaciones que se comprueban solas",
+          "body": "El vídeo y el GIF usan FFmpeg, que solo se descarga la primera vez que grabas, cuando lo aceptas, y se verifica con un hash SHA-256 guardado en el código. El máster sin pérdida Cine se decodifica al terminar y se compara fotograma a fotograma, y cada MP4 exportado se revisa antes de entregarlo."
+        },
+        {
+          "title": "Actualizaciones que no se pueden suplantar",
+          "body": "Una actualización instalada desde la aplicación debe coincidir con el SHA-256 que publica GitHub y llevar una firma RSA-PSS hecha con una clave que nunca se guarda en el repositorio. Las versiones se compilan en GitHub Actions y se publican con su checksum y una atestación de procedencia firmada."
+        },
+        {
+          "title": "Documentación generada desde la aplicación real",
+          "body": "Las capturas del README, los clips de cada función y el vídeo salen de scripts que parten de pantallas reales de la aplicación con contenido sintético. Si la interfaz cambia, el material se vuelve a generar en lugar de retocarlo a mano."
+        }
+      ],
+      "limits": [
+        "Solo para Windows 10 y 11. La interfaz está hoy en castellano; la traducción al inglés está prevista.",
+        "El ejecutable aún no está firmado con un certificado de código, así que SmartScreen avisa la primera vez que se abre. Cada versión publica su checksum SHA-256 y una atestación de procedencia para comprobar lo que descargas.",
+        "La detección de datos sensibles puede pasar algo por alto. El tapado automático viene desactivado, y conviene revisar cada resultado antes de compartirlo.",
+        "El reconocimiento de texto depende del OCR integrado en Windows, así que su precisión varía según el sistema y la imagen. El índice de texto del historial se puede desactivar o borrar.",
+        "Para grabar hace falta FFmpeg, que no viene incluido y se distribuye con su propia licencia GPL. Aparte de esa descarga, la red solo se usa para buscar actualizaciones en la API de GitHub Releases, y se puede desactivar.",
+        "Tiempos como 1,6 ms por movimiento del puntero o unos 0,4 s para tapar datos a 1080p son mediciones del propio proyecto, no una prueba de rendimiento independiente."
+      ],
+      "outcome": "El entregable es una aplicación de Windows operativa, publicada como ejecutable y como paquete MSI en GitHub Releases, con el código bajo licencia MIT y una web que la presenta con el vídeo completo. No se atribuyen cifras de descargas, uso ni ahorro de tiempo.",
+      "verification": [
+        "Descarga Stackshot desde su web o desde GitHub Releases, compara el checksum SHA-256 y ábrelo sin permisos de administrador.",
+        "Pulsa Impr Pant, selecciona un área y pégala con Ctrl+V. Abre la miniatura en el editor y prueba el botón Datos sensibles sobre un documento con datos sintéticos.",
+        "Consulta el repositorio App para revisar la captura, el OCR, la grabación y la verificación de actualizaciones, y cada versión publicada para su checksum SHA-256 y su atestación de procedencia."
+      ],
+      "demo": {
+        "src": "/media/stackshot-film-es.mp4",
+        "poster": "/media/stackshot-film-es-poster.jpg",
+        "caption": "El vídeo oficial de 1:38, el mismo corte que en stackshot.rubenitx.me. Es un montaje editado: pantallas reales de la aplicación con contenido sintético, animadas escena a escena, con música original sintetizada y sin voz. Solo se reproduce al pulsar el botón de reproducción. No es la grabación de una sola sesión ni una prueba de rendimiento.",
+        "steps": [
+          "Pulsa Impr Pant y elige uno de los siete modos de captura.",
+          "Selecciona un área: la captura se copia y espera como miniatura flotante.",
+          "Márcala, tapa los datos sensibles o captura una página entera con desplazamiento.",
+          "Graba en MP4 o GIF con sonido y encuentra después cualquier captura por el texto que contiene."
+        ],
+        "tracks": [
+          { "lang": "en", "label": "English", "src": "/media/stackshot-film.en.vtt" },
+          { "lang": "es", "label": "Español", "src": "/media/stackshot-film.es.vtt" }
+        ]
+      }
+    }
+  },
+  {
     "id": "en:sars-cov-2",
     "key": "sars-cov-2",
     "lang": "en",
-    "order": 3,
+    "order": 4,
     "title": "The Mutational Landscape of SARS-CoV-2",
     "eyebrow": "Research",
     "description": "Interactive portal for exploring mutations across the SARS-CoV-2 genome. An interdisciplinary project between software engineering and bioinformatics, in collaboration with Universitat Rovira i Virgili.",
@@ -323,7 +485,7 @@
     "id": "es:sars-cov-2",
     "key": "sars-cov-2",
     "lang": "es",
-    "order": 3,
+    "order": 4,
     "title": "The Mutational Landscape of SARS-CoV-2",
     "eyebrow": "Investigación",
     "description": "Portal interactivo para explorar mutaciones del genoma SARS-CoV-2. Proyecto interdisciplinar entre ingeniería de software y bioinformática, en colaboración con la Universitat Rovira i Virgili.",
@@ -375,7 +537,7 @@
     "id": "en:portfolio",
     "key": "portfolio",
     "lang": "en",
-    "order": 4,
+    "order": 5,
     "title": "Personal Portfolio",
     "eyebrow": "Web App",
     "description": "This very portfolio. Built with Astro as static HTML, with an interactive Killua particle simulation, 3D motion carousels, and a single source of truth for all content.",
@@ -395,7 +557,7 @@
     "id": "es:portfolio",
     "key": "portfolio",
     "lang": "es",
-    "order": 4,
+    "order": 5,
     "title": "Portafolio Personal",
     "eyebrow": "Aplicación Web",
     "description": "Este mismo portafolio. Construido con Astro como HTML estático, con simulación de partículas ASCII de Killua, carrusel 3D y una única fuente de verdad para todo el contenido.",

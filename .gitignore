@@ -67,6 +67,11 @@ dist-ssr
 !/public/media/transcriber-demo-guided-original.mp4
 !/public/media/mutation-portal-demo.mp4
 !/public/media/mutation-portal-demo-poster.jpg
+# El vídeo de Stackshot: el mismo corte que sirve stackshot.rubenitx.me, uno por idioma.
+!/public/media/stackshot-film-en.mp4
+!/public/media/stackshot-film-en-poster.jpg
+!/public/media/stackshot-film-es.mp4
+!/public/media/stackshot-film-es-poster.jpg
 # Trabajo local de los generadores; nunca publicar fuentes ni intermedios.
 /.transcriber-guide-work/
 /.transcriber-guidance-render/

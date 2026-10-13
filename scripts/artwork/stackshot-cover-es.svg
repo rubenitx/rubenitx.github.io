@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="2000" height="1000" viewBox="0 0 2000 1000" role="img">
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#05080f"/>
+      <stop offset=".56" stop-color="#070b18"/>
+      <stop offset="1" stop-color="#0a0d1f"/>
+    </linearGradient>
+    <radialGradient id="blue-glow" cx="70%" cy="16%" r="40%">
+      <stop stop-color="#4f7bff" stop-opacity=".3"/>
+      <stop offset=".45" stop-color="#5b9bff" stop-opacity=".1"/>
+      <stop offset="1" stop-color="#05080f" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="violet-glow" cx="30%" cy="54%" r="44%">
+      <stop stop-color="#8b5cf6" stop-opacity=".22"/>
+      <stop offset=".42" stop-color="#4c2f8f" stop-opacity=".08"/>
+      <stop offset="1" stop-color="#05080f" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="cyan-glow" cx="78%" cy="58%" r="30%">
+      <stop stop-color="#14b8e6" stop-opacity=".16"/>
+      <stop offset="1" stop-color="#05080f" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="band" x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="#0a0f1c" stop-opacity=".1"/>
+      <stop offset=".24" stop-color="#121338" stop-opacity=".62"/>
+      <stop offset=".66" stop-color="#0f1a3a" stop-opacity=".74"/>
+      <stop offset="1" stop-color="#0a0f1c" stop-opacity=".14"/>
+    </linearGradient>
+    <linearGradient id="brand" x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="#8b5cf6"/>
+      <stop offset=".5" stop-color="#4f7bff"/>
+      <stop offset="1" stop-color="#14b8e6"/>
+    </linearGradient>
+    <linearGradient id="window" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#111729"/>
+      <stop offset="1" stop-color="#0b1020"/>
+    </linearGradient>
+    <linearGradient id="thumb" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#1a2240"/>
+      <stop offset="1" stop-color="#10162c"/>
+    </linearGradient>
+    <pattern id="grid" width="64" height="64" patternUnits="userSpaceOnUse">
+      <path d="M64 0H0V64" fill="none" stroke="#5b9bff" stroke-opacity=".045" stroke-width="1"/>
+    </pattern>
+    <filter id="soft-shadow" x="-20%" y="-20%" width="140%" height="160%">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="6"/>
+    </filter>
+  </defs>
+
+  <rect width="2000" height="1000" fill="url(#background)"/>
+  <rect width="2000" height="1000" fill="url(#grid)"/>
+  <rect width="2000" height="1000" fill="url(#blue-glow)"/>
+  <rect width="2000" height="1000" fill="url(#violet-glow)"/>
+  <rect width="2000" height="1000" fill="url(#cyan-glow)"/>
+
+  <!-- Capture flow: one key, a selection, a thumbnail that is already on the clipboard. -->
+  <g font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="15" font-weight="600" letter-spacing=".11em">
+    <g fill="none" stroke="#4f7bff" stroke-width="1.4" stroke-opacity=".7">
+      <path d="M750 104h40"/>
+      <path d="M940 104h90"/>
+      <path d="M1200 104h50"/>
+      <path d="M1390 104h40"/>
+      <path d="M780 99l10 5-10 5M1020 99l10 5-10 5M1240 99l10 5-10 5M1420 99l10 5-10 5"/>
+    </g>
+    <g fill="#05080f" stroke="#4f7bff" stroke-width="1.4">
+      <rect x="600" y="77" width="150" height="54" rx="10"/>
+      <rect x="790" y="77" width="150" height="54" rx="10"/>
+      <rect x="1030" y="77" width="170" height="54" rx="10"/>
+      <rect x="1250" y="77" width="140" height="54" rx="10"/>
+      <rect x="1430" y="77" width="130" height="54" rx="10"/>
+    </g>
+    <g fill="#8fb7ff">
+      <text x="684" y="109" text-anchor="middle">IMPR PANT</text>
+      <text x="874" y="109" text-anchor="middle">SELECCIÓN</text>
+      <text x="1124" y="109" text-anchor="middle">MINIATURA</text>
+      <text x="1330" y="109" text-anchor="middle">EDITOR</text>
+      <text x="1504" y="109" text-anchor="middle">CTRL+V</text>
+    </g>
+    <g fill="#4f7bff">
+      <circle cx="618" cy="104" r="4"/>
+      <circle cx="808" cy="104" r="4"/>
+      <circle cx="1048" cy="104" r="4"/>
+      <circle cx="1268" cy="104" r="4"/>
+      <circle cx="1448" cy="104" r="4"/>
+    </g>
+
+    <!-- Video branch: recordings land in the same thumbnail stack. -->
+    <g fill="none" stroke="#8b5cf6" stroke-width="1.35" stroke-opacity=".75">
+      <path d="M865 131v58h20"/>
+      <path d="M1005 189h20"/>
+      <path d="M1095 162v-31"/>
+      <path d="M875 184l10 5-10 5M1015 184l10 5-10 5M1090 141l5-10 5 10"/>
+    </g>
+    <g fill="#090a17" stroke="#8b5cf6" stroke-width="1.25">
+      <rect x="885" y="162" width="120" height="54" rx="10"/>
+      <rect x="1025" y="162" width="140" height="54" rx="10"/>
+    </g>
+    <g fill="#c4b5fd">
+      <text x="945" y="194" text-anchor="middle">GRABAR</text>
+      <text x="1095" y="194" text-anchor="middle">MP4 / GIF</text>
+    </g>
+    <text x="879" y="151" fill="#c4b5fd" font-size="12" letter-spacing=".08em">VÍDEO</text>
+  </g>
+
+  <g fill="none" stroke-linecap="round" opacity=".24">
+    <path d="M134 211c80-28 142 28 222 0s142 28 222 0" stroke="#8b5cf6" stroke-width="2"/>
+    <path d="M1600 240c58-19 106 19 164 0s106 19 164 0" stroke="#14b8e6" stroke-width="2"/>
+  </g>
+
+  <!-- Illustrative capture: a selection over synthetic data, two covered fields and a thumbnail waiting in the corner. -->
+  <rect x="0" y="286" width="2000" height="420" fill="url(#band)"/>
+  <line x1="0" y1="286" x2="2000" y2="286" stroke="#4f7bff" stroke-opacity=".42"/>
+  <line x1="0" y1="706" x2="2000" y2="706" stroke="#8b5cf6" stroke-opacity=".34"/>
+
+  <text x="1000" y="326" text-anchor="middle" fill="#8d94b2" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="16" font-weight="600" letter-spacing=".2em">IMPR PANT  &#183;  SELECCIONA  &#183;  MARCA  &#183;  CTRL+V</text>
+
+  <g font-family="'Helvetica Neue', Inter, Arial, sans-serif">
+    <rect x="330" y="362" width="820" height="330" rx="14" fill="#000" opacity=".5" filter="url(#soft-shadow)"/>
+    <rect x="330" y="356" width="820" height="330" rx="14" fill="url(#window)" stroke="#26314d"/>
+    <path d="M330 398h820" stroke="#26314d"/>
+    <g fill="#3a4766">
+      <circle cx="356" cy="377" r="6"/>
+      <circle cx="378" cy="377" r="6"/>
+      <circle cx="400" cy="377" r="6"/>
+    </g>
+    <text x="740" y="383" text-anchor="middle" fill="#7d89a8" font-size="16">Datos de pago</text>
+
+    <g font-size="21">
+      <text x="400" y="452" fill="#7d89a8">Nombre</text>
+      <text x="560" y="452" fill="#e3e8f3">Ana Ejemplo</text>
+      <text x="400" y="510" fill="#7d89a8">IBAN</text>
+      <rect x="558" y="488" width="356" height="30" rx="5" fill="#020308" stroke="#2c3655"/>
+      <text x="400" y="568" fill="#7d89a8">Correo</text>
+      <rect x="558" y="546" width="292" height="30" rx="5" fill="#020308" stroke="#2c3655"/>
+      <text x="400" y="626" fill="#7d89a8">Importe</text>
+      <text x="560" y="626" fill="#e3e8f3">1.240,00 &#8364;</text>
+    </g>
+
+    <!-- Numbered steps and an arrow, drawn with the editor's brand colours. -->
+    <g font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="17" font-weight="700" text-anchor="middle">
+      <circle cx="936" cy="503" r="17" fill="#8b5cf6"/>
+      <text x="936" y="509" fill="#fff">1</text>
+      <circle cx="872" cy="561" r="17" fill="#4f7bff"/>
+      <text x="872" y="567" fill="#fff">2</text>
+    </g>
+    <path d="M1030 470c-10 90-60 140-310 150" fill="none" stroke="url(#brand)" stroke-width="5" stroke-linecap="round"/>
+    <path d="M736 606l-20 14 22 12" fill="none" stroke="#4f7bff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Selection with live dimensions. -->
+    <rect x="372" y="424" width="700" height="232" fill="#4f7bff" fill-opacity=".05" stroke="#fff" stroke-opacity=".9" stroke-width="2" stroke-dasharray="10 7"/>
+    <g fill="#fff">
+      <rect x="366" y="418" width="12" height="12" rx="2"/>
+      <rect x="1066" y="418" width="12" height="12" rx="2"/>
+      <rect x="366" y="650" width="12" height="12" rx="2"/>
+      <rect x="1066" y="650" width="12" height="12" rx="2"/>
+    </g>
+    <rect x="928" y="666" width="144" height="30" rx="15" fill="#1c1c20" stroke="#3a3a42"/>
+    <text x="1000" y="687" text-anchor="middle" fill="#f5f5f7" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="15">700 &#215; 232</text>
+
+    <!-- Floating thumbnail stack: copied already, ready to drag. -->
+    <rect x="1346" y="404" width="360" height="236" rx="18" fill="#000" opacity=".55" filter="url(#soft-shadow)"/>
+    <rect x="1372" y="384" width="340" height="216" rx="18" fill="#141a30" stroke="#2a3456" opacity=".7"/>
+    <rect x="1350" y="400" width="350" height="226" rx="18" fill="url(#thumb)" stroke="#36446e"/>
+    <rect x="1372" y="422" width="306" height="128" rx="10" fill="#0b1020" stroke="#26314d"/>
+    <g fill="#3a4766">
+      <rect x="1392" y="446" width="60" height="10" rx="5"/>
+      <rect x="1468" y="446" width="120" height="10" rx="5"/>
+      <rect x="1392" y="474" width="60" height="10" rx="5"/>
+      <rect x="1392" y="502" width="60" height="10" rx="5"/>
+      <rect x="1392" y="528" width="60" height="10" rx="5"/>
+      <rect x="1468" y="528" width="96" height="10" rx="5"/>
+    </g>
+    <rect x="1468" y="470" width="150" height="18" rx="4" fill="#05070d"/>
+    <rect x="1468" y="498" width="124" height="18" rx="4" fill="#05070d"/>
+    <path d="M1640 470c-4 34-20 52-70 60" fill="none" stroke="url(#brand)" stroke-width="3" stroke-linecap="round"/>
+    <rect x="1372" y="568" width="140" height="40" rx="20" fill="#f5f5f7"/>
+    <text x="1442" y="594" text-anchor="middle" fill="#1c1c1e" font-size="17" font-weight="600">Copiar</text>
+    <rect x="1526" y="568" width="152" height="40" rx="20" fill="#f5f5f7"/>
+    <text x="1602" y="594" text-anchor="middle" fill="#1c1c1e" font-size="17" font-weight="600">Guardar</text>
+    <text x="1525" y="672" text-anchor="middle" fill="#7d89a8" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="13" letter-spacing=".12em">EN EL PORTAPAPELES</text>
+    <circle cx="1418" cy="667" r="4" fill="#14b8e6" filter="url(#glow)"/>
+    <circle cx="1418" cy="667" r="3" fill="#14b8e6"/>
+  </g>
+
+  <!-- Quiet technical texture; the HTML title occupies the lower-left. -->
+  <g fill="#5b9bff" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="13" letter-spacing=".09em" opacity=".1">
+    <text x="1240" y="776">OCR / EN TU EQUIPO</text>
+    <text x="1240" y="806">TAPAR / IBAN DNI CORREO</text>
+    <text x="1240" y="836">TELEMETRÍA / NINGUNA</text>
+    <text x="1570" y="776">EXE / 2.2 MB</text>
+    <text x="1570" y="806">VÍDEO / 60 FPS</text>
+    <text x="1570" y="836">LICENCIA / MIT</text>
+  </g>
+</svg>
