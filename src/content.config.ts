@@ -122,6 +122,8 @@ const projects = defineCollection({
       tech: z.array(z.string()).default([]),
       domains: z.array(z.string()).default([]),
       link: z.string().url().optional(),
+      /** What `link` opens: the running app, or the product's website when it is installed elsewhere. */
+      linkKind: z.enum(['app', 'site']).default('app'),
       /** One repo, or frontend + API when the product is split. */
       github: z
         .union([

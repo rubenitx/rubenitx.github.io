@@ -103,7 +103,7 @@ async function languageSuite() {
   try {
     const routes = [
       ['/', '/es/'], ['/es/', '/'], ['/v1/', '/v1/es/'], ['/v1/es/', '/v1/'],
-      ...['finance-core', 'youtube-transcriber', 'sars-cov-2'].flatMap((slug) => [
+      ...['finance-core', 'youtube-transcriber', 'stackshot', 'sars-cov-2'].flatMap((slug) => [
         [`/work/${slug}/`, `/es/work/${slug}/`],
         [`/es/work/${slug}/`, `/work/${slug}/`],
       ]),
@@ -230,7 +230,7 @@ async function languageSuite() {
   const keyboardCopy = read('src/i18n/keyboards.ts')
   check(keyboardCopy.includes("source: 'Part reference'") && keyboardCopy.includes("source: 'Referencia de la pieza'"),
     'part documentation links no longer promise a purchasing destination')
-  for (const [key, asset] of [['financial-architecture', 'finance-core-es.svg'], ['youtube-transcriber', 'youtube-transcriber-es.png']]) {
+  for (const [key, asset] of [['financial-architecture', 'finance-core-es.svg'], ['youtube-transcriber', 'youtube-transcriber-es.png'], ['stackshot', 'stackshot-es.png']]) {
     check(project(`es:${key}`).image.endsWith(asset) && existsSync(`src/assets/projects/${asset}`)
       && project(`en:${key}`).image !== project(`es:${key}`).image, `${key}: Spanish artwork is available and selected only for Spanish`)
   }

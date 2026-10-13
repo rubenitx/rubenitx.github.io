@@ -20,6 +20,14 @@ const cards = {
     tag: { en: 'CASE STUDY // WEB APP', es: 'CASO DE ESTUDIO // APLICACIÓN WEB' },
     flow: ['URL', 'TXT', 'ES'],
   },
+  'work-stackshot': {
+    title: ['Stackshot'],
+    en: ['Capture, annotate and share in seconds', 'Windows · C# · On-device OCR · Open source'],
+    es: ['Captura, marca y comparte en segundos', 'Windows · C# · OCR local · Código abierto'],
+    accent: '#a78bfa',
+    tag: { en: 'CASE STUDY // DESKTOP APP', es: 'CASO DE ESTUDIO // APP DE ESCRITORIO' },
+    flow: ['PRTSC', 'PNG', 'CTRL+V'],
+  },
   'work-sars': {
     title: ['SARS-CoV-2'],
     en: ['Exploring the mutational landscape', 'Interactive genomics · URV · Published research'],

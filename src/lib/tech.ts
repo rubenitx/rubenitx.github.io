@@ -161,6 +161,41 @@ export const TECH: Record<string, TechMeta> = {
     glow: 'rgba(0, 120, 212, 0.3)',
     url: 'https://www.microsoft.com/en-us/windows-server',
   },
+  'C#': {
+    color: '#a179dc',
+    glow: 'rgba(161, 121, 220, 0.3)',
+    url: 'https://learn.microsoft.com/dotnet/csharp/',
+  },
+  '.NET Framework': {
+    icon: '/icons/dotnet.svg',
+    color: '#7c5cf0',
+    glow: 'rgba(124, 92, 240, 0.3)',
+    url: 'https://dotnet.microsoft.com/download/dotnet-framework',
+  },
+  WinForms: {
+    icon: '/icons/dotnet.svg',
+    color: '#7c5cf0',
+    glow: 'rgba(124, 92, 240, 0.3)',
+    url: 'https://learn.microsoft.com/dotnet/desktop/winforms/',
+  },
+  WPF: {
+    icon: '/icons/dotnet.svg',
+    color: '#7c5cf0',
+    glow: 'rgba(124, 92, 240, 0.3)',
+    url: 'https://learn.microsoft.com/dotnet/desktop/wpf/',
+  },
+  FFmpeg: {
+    icon: '/icons/ffmpeg.svg',
+    color: '#4caf50',
+    glow: 'rgba(76, 175, 80, 0.3)',
+    url: 'https://ffmpeg.org/',
+  },
+  'Windows OCR': {
+    icon: '/icons/windows.svg',
+    color: '#0078d4',
+    glow: 'rgba(0, 120, 212, 0.3)',
+    url: 'https://learn.microsoft.com/uwp/api/windows.media.ocr',
+  },
   MySQL: {
     icon: '/icons/mysql.svg',
     color: '#00758f',

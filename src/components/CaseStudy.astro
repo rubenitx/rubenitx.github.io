@@ -45,19 +45,26 @@ const CARD_LABEL = 't-meta text-[0.62rem] text-[color:var(--fg-3)]'
 const isTranscriber = projectKey === 'youtube-transcriber'
 const isMutation = projectKey === 'sars-cov-2'
 const isFinance = projectKey === 'financial-architecture'
-const isEditorial = isTranscriber || isMutation || isFinance
+const isStackshot = projectKey === 'stackshot'
+const isEditorial = isTranscriber || isMutation || isFinance || isStackshot
 const demo = project.caseStudy?.demo ?? project.deep?.demo
-const titleBrand = isMutation ? project.title.replace('SARS-CoV-2', '').trim() : project.title.split(' ')[0]
-const titleAccent = isMutation ? 'SARS-CoV-2' : project.title.split(' ').slice(1).join(' ')
+/* Stackshot is one word: "Stack" keeps the brand colour and "shot" takes the accent, with no space between them. */
+const titleBrand = isMutation ? project.title.replace('SARS-CoV-2', '').trim()
+  : isStackshot ? project.title.slice(0, 5) : project.title.split(' ')[0]
+const titleAccent = isMutation ? 'SARS-CoV-2'
+  : isStackshot ? project.title.slice(5) : project.title.split(' ').slice(1).join(' ')
 const flowKeys = isMutation
   ? ['v2.mutation.source', 'v2.mutation.process', 'v2.mutation.output'] as const
   : isFinance ? ['v2.finance.source', 'v2.finance.process', 'v2.finance.output'] as const
+  : isStackshot ? ['v2.stackshot.source', 'v2.stackshot.process', 'v2.stackshot.output'] as const
   : ['v2.case.source', 'v2.case.transcript', 'v2.case.translation'] as const
 const researchIcons = ['dna', 'network', 'chart', 'book'] as const
 const wave = [20, 32, 48, 30, 60, 78, 48, 92, 66, 42, 80, 100, 68, 44, 88, 58, 36, 70, 48, 28, 42, 24]
+/* The page behind the selection: plain rows, and the two the detector covers. */
+const screenRows = [{ width: 46 }, { width: 70, covered: true }, { width: 58, covered: true }, { width: 38 }]
 ---
 
-<article class:list={['mx-auto w-full max-w-3xl px-5 pb-24 pt-28 sm:px-8 sm:pt-36', { 'editorial-case': isEditorial, 'transcriber-case': isTranscriber, 'mutation-case': isMutation, 'finance-case': isFinance }]}>
+<article class:list={['mx-auto w-full max-w-3xl px-5 pb-24 pt-28 sm:px-8 sm:pt-36', { 'editorial-case': isEditorial, 'transcriber-case': isTranscriber, 'mutation-case': isMutation, 'finance-case': isFinance, 'stackshot-case': isStackshot }]}>
   <a id="case-back" href={backPath} class="inline-flex items-center gap-2 text-sm text-[color:var(--fg-3)] transition hover:text-[color:var(--fg)]">
     <Icon name="arrowLeft" class="h-4 w-4" />
     {t(lang, 'v2.case.back')}
@@ -70,8 +77,7 @@ const wave = [20, 32, 48, 30, 60, 78, 48, 92, 66, 42, 80, 100, 68, 44, 88, 58, 3
   <h1 class:list={['t-display mt-4', { 'case-title': isEditorial }]} aria-label={isEditorial ? project.title : undefined}>
     {isEditorial ? (
       <span aria-hidden="true">
-        <span class="case-title-brand">{titleBrand} </span>
-        <span class="case-title-accent">{Array.from(titleAccent).map((letter, index) => (
+        <span class="case-title-brand">{isStackshot ? titleBrand : `${titleBrand} `}</span><span class="case-title-accent">{Array.from(titleAccent).map((letter, index) => (
           <span class="case-letter" style={`--letter:${index}`}>{letter}</span>
         ))}</span>
       </span>
@@ -146,6 +152,22 @@ const wave = [20, 32, 48, 30, 60, 78, 48, 92, 66, 42, 80, 100, 68, 44, 88, 58, 3
       </div>
       <div class="finance-holdings"><span>{t(lang, 'v2.finance.holdings')}</span><div><b>BTC</b><b>ETH</b><b>SOL</b></div></div>
       <div class="case-signal-foot"><span>{t(lang, 'v2.finance.providers')}</span><Icon name="shield" class="h-4 w-4" /></div>
+    </div>
+  )}
+  {isStackshot && (
+    <div class="case-signal stackshot-signal reveal" aria-hidden="true">
+      <div class="case-signal-head"><span>STACKSHOT / {t(lang, 'v2.stackshot.key')}</span><span class="case-signal-status" /></div>
+      <div class="stackshot-screen">
+        {screenRows.map((row) => <i class:list={{ 'is-covered': row.covered }} style={`--width:${row.width}%`} />)}
+        <span class="stackshot-selection"><b>640 × 360</b></span>
+      </div>
+      <div class="case-signal-caption">{t(lang, 'v2.stackshot.signal')}</div>
+      <div class="case-signal-lines stackshot-stack">
+        {['PNG', 'MP4', 'GIF'].map((kind, row) => (
+          <div style={`--row:${row}`}><span>{kind}</span><i /><i /></div>
+        ))}
+      </div>
+      <div class="case-signal-foot"><span>Windows OCR / {t(lang, 'v2.stackshot.clipboard')}</span><span>{t(lang, 'v2.stackshot.size')}</span></div>
     </div>
   )}
   </div>

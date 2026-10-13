@@ -251,3 +251,21 @@ html.js .mutation-signal.is-in .mutation-sequence span { animation: mutationBase
 @media (prefers-reduced-motion: reduce) {
   html.js .mutation-signal.is-in .mutation-sequence span { animation: none; }
 }
+
+.stackshot-case { --case-accent: #a78bfa; }
+.stackshot-case .case-title-brand, .stackshot-case .case-title-accent { display: inline; }
+.stackshot-signal { background: radial-gradient(ellipse at 80% 0%, var(--case-glow), transparent 70%), var(--ink-800); }
+.stackshot-screen { position: relative; display: grid; gap: .8rem; margin-block: 1.25rem 1.5rem; padding: 1.4rem 1.2rem 1.6rem; border: 1px solid var(--line); border-radius: .75rem; background: var(--ink-900); }
+.stackshot-screen > i { width: var(--width); height: .45rem; border-radius: 3px; background: var(--fg-3); opacity: .55; }
+.stackshot-screen > i.is-covered { height: .8rem; border: 1px solid var(--case-edge); background: #000; opacity: 1; }
+.stackshot-selection { position: absolute; inset: .7rem 12% .8rem .6rem; border: 1.5px dashed var(--fg); border-radius: 2px; background: color-mix(in srgb, var(--case-accent) 7%, transparent); }
+.stackshot-selection b { position: absolute; right: .4rem; bottom: -.7rem; padding: .1rem .5rem; border: 1px solid var(--line); border-radius: 999px; background: var(--ink-700); color: var(--fg); font: 500 .55rem var(--font-mono); }
+.stackshot-stack span { grid-row: span 2; }
+html.js .stackshot-signal.is-in .stackshot-selection { animation: stackshotSelect .9s cubic-bezier(.16, 1, .3, 1) .25s both; }
+html.js .stackshot-signal.is-in .stackshot-stack > div { animation: stackshotThumbIn .6s cubic-bezier(.16, 1, .3, 1) calc(.7s + var(--row) * .12s) both; }
+@keyframes stackshotSelect { from { clip-path: inset(0 100% 100% 0); } to { clip-path: inset(-1rem); } }
+@keyframes stackshotThumbIn { from { opacity: 0; transform: translateX(1rem); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  html.js .stackshot-signal.is-in .stackshot-selection,
+  html.js .stackshot-signal.is-in .stackshot-stack > div { animation: none; }
+}
