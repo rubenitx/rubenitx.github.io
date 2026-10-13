@@ -104,6 +104,32 @@
     "indexable": true
   },
   {
+    "id": "en:work-stackshot",
+    "key": "work-stackshot",
+    "lang": "en",
+    "path": "/work/stackshot/",
+    "title": "Stackshot — Screenshots and Screen Recording for Windows",
+    "description": "One key to capture, annotate, cover sensitive data and record on Windows. A 2.2 MB C# app with on-device OCR, verified updates, open source and its official film.",
+    "ogImage": "/og/work-stackshot-en.png",
+    "ogImageAlt": "Stackshot — capture, annotate and share in seconds on Windows",
+    "ogImageWidth": 1200,
+    "ogImageHeight": 630,
+    "indexable": true
+  },
+  {
+    "id": "es:work-stackshot",
+    "key": "work-stackshot",
+    "lang": "es",
+    "path": "/es/work/stackshot/",
+    "title": "Stackshot — Capturas y grabación de pantalla para Windows",
+    "description": "Una tecla para capturar, marcar, tapar datos sensibles y grabar en Windows. Una app en C# de 2,2 MB con OCR local, actualizaciones verificadas, código abierto y su vídeo.",
+    "ogImage": "/og/work-stackshot-es.png",
+    "ogImageAlt": "Stackshot — captura, marca y comparte en segundos en Windows",
+    "ogImageWidth": 1200,
+    "ogImageHeight": 630,
+    "indexable": true
+  },
+  {
     "id": "en:work-finance",
     "key": "work-finance",
     "lang": "en",

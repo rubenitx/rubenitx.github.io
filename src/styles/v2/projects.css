@@ -237,12 +237,14 @@ html.js .project-slide.is-active {
   .project-action-icon { width: 1.7rem; height: 1.7rem; flex-shrink: 0; }
   .project-action-arrow { width: .75rem; flex-shrink: 0; }
   .project-action-paper:last-child:nth-child(odd) { grid-column: 1 / -1; }
-  .project-slide[data-project='youtube-transcriber'] .project-cover-scrim {
+  .project-slide[data-project='youtube-transcriber'] .project-cover-scrim,
+  .project-slide[data-project='stackshot'] .project-cover-scrim {
     background:
       linear-gradient(180deg, rgba(4, 8, 16, 0.97) 0 22%, rgba(4, 8, 16, 0.82) 26%, transparent 31%),
       linear-gradient(0deg, rgba(4, 8, 16, 0.98) 0 30%, rgba(4, 8, 16, 0.9) 38%, transparent 50%);
   }
-  .project-slide[data-project='youtube-transcriber'] .project-meta::before {
+  .project-slide[data-project='youtube-transcriber'] .project-meta::before,
+  .project-slide[data-project='stackshot'] .project-meta::before {
     content: '';
     position: absolute;
     z-index: -1;
@@ -273,7 +275,8 @@ html.js .project-slide.is-active {
 
 /* Keep the fixed-size metadata clear of the scaled architecture diagram. */
 @media (min-width: 640px) and (max-width: 1199px) {
-  .project-slide[data-project='youtube-transcriber'] .project-meta {
+  .project-slide[data-project='youtube-transcriber'] .project-meta,
+  .project-slide[data-project='stackshot'] .project-meta {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.35rem;
