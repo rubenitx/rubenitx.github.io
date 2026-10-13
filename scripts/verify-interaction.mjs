@@ -460,8 +460,9 @@ function suite(page, dom) {
 
   const projectSlides = all('.project-slide')
   const projectCarousel = el('project-carousel')
-  check(projectSlides[0]?.dataset.project === 'youtube-transcriber',
-    'the showcase starts with the inspectable Transcriber app')
+  check(projectSlides[0]?.dataset.project === 'stackshot'
+    && projectSlides[1]?.dataset.project === 'youtube-transcriber',
+    'the showcase opens with Stackshot, followed by the inspectable Transcriber app')
   const projectTitle = projectSlides[0]?.querySelector('.project-cover-title')
   check(!projectTitle?.classList.contains('has-entered'), 'the first title does not animate during carousel boot')
   const visibilityOptions = dom.intersect(projectTitle, false)

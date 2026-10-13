@@ -600,8 +600,8 @@ for (const page of EXPECTED.filter((page) => page.kind === 'v2')) {
   const cards = [...document.querySelectorAll('#work [data-project]')]
   const keys = cards.map((card) => card.dataset.project)
   assert(
-    keys.join(',') === 'youtube-transcriber,stackshot,financial-architecture,sars-cov-2,portfolio',
-    `${page.path} presents each project once, ordered Transcriber, Stackshot, Finance, research and portfolio source`,
+    keys.join(',') === 'stackshot,youtube-transcriber,financial-architecture,sars-cov-2,portfolio',
+    `${page.path} presents each project once, ordered Stackshot, Transcriber, Finance, research and portfolio source`,
   )
   assert(
     document.querySelectorAll('.project-slide').length === 4

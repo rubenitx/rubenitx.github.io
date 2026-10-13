@@ -118,8 +118,10 @@ export function initProjectCarousel() {
   /* The light that follows the pointer is decorative and not part of the carousel. */
   for (const slide of slides) trackPointer(slide, '--project-pointer')
 
-  const title = carousel.querySelector('.project-slide[data-project="youtube-transcriber"] .project-cover-title')
-  if (title) whenNear(title, () => title.classList.add('has-entered'), '-72px 0px -12% 0px')
+  /* Every cover title reveals its accent once, the first time it is really on screen. */
+  for (const title of carousel.querySelectorAll('.project-cover-title')) {
+    whenNear(title, () => title.classList.add('has-entered'), '-72px 0px -12% 0px')
+  }
 
   createCarousel({
     slides,
