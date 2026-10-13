@@ -111,6 +111,21 @@ from a Java/Spring Boot API.
 · [Frontend source](https://github.com/rubenitx/yt-transcriber-web)
 · [API source](https://github.com/rubenitx/yt-transcriber-api)
 
+### Stackshot
+
+<a href="https://rubenitx.me/work/stackshot/">
+  <img src="./public/og/work-stackshot-en.png" alt="Stackshot — capture, annotate and share in seconds on Windows." width="100%">
+</a>
+
+A free, open source screenshot tool and screen recorder for Windows. One key
+captures, copies and parks the result as a floating thumbnail; the editor
+annotates and covers sensitive data with on-device OCR, and recordings go out as
+MP4 or GIF. A single 2.2 MB C# executable with verified updates.
+
+[Read the case](https://rubenitx.me/work/stackshot/)
+· [Website and film](https://stackshot.rubenitx.me/)
+· [Source](https://github.com/rubenitx/stackshot)
+
 ### Finance Core
 
 <a href="https://rubenitx.me/work/finance-core/">
