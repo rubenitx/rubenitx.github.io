@@ -33,6 +33,8 @@ const EXPECTED = [
   { path: '/es/work/sars-cov-2/', file: 'es/work/sars-cov-2/index.html', lang: 'es', cluster: 'case', indexable: true, kind: 'case' },
   { path: '/work/youtube-transcriber/', file: 'work/youtube-transcriber/index.html', lang: 'en', cluster: 'transcriber', indexable: true, kind: 'case' },
   { path: '/es/work/youtube-transcriber/', file: 'es/work/youtube-transcriber/index.html', lang: 'es', cluster: 'transcriber', indexable: true, kind: 'case' },
+  { path: '/work/stackshot/', file: 'work/stackshot/index.html', lang: 'en', cluster: 'stackshot', indexable: true, kind: 'case' },
+  { path: '/es/work/stackshot/', file: 'es/work/stackshot/index.html', lang: 'es', cluster: 'stackshot', indexable: true, kind: 'case' },
   { path: '/work/finance-core/', file: 'work/finance-core/index.html', lang: 'en', cluster: 'finance', indexable: true, kind: 'case' },
   { path: '/es/work/finance-core/', file: 'es/work/finance-core/index.html', lang: 'es', cluster: 'finance', indexable: true, kind: 'case' },
   { path: '/v1/', file: 'v1/index.html', lang: 'en', cluster: null, indexable: false, kind: 'v1' },
@@ -46,6 +48,7 @@ const CLUSTERS = {
   cv: { en: '/cv/', es: '/es/cv/', xDefault: '/cv/' },
   case: { en: '/work/sars-cov-2/', es: '/es/work/sars-cov-2/', xDefault: '/work/sars-cov-2/' },
   transcriber: { en: '/work/youtube-transcriber/', es: '/es/work/youtube-transcriber/', xDefault: '/work/youtube-transcriber/' },
+  stackshot: { en: '/work/stackshot/', es: '/es/work/stackshot/', xDefault: '/work/stackshot/' },
   finance: { en: '/work/finance-core/', es: '/es/work/finance-core/', xDefault: '/work/finance-core/' },
 }
 
@@ -418,6 +421,7 @@ const PAIRS = [
   ['cv/index.html', 'es/cv/index.html'],
   ['work/sars-cov-2/index.html', 'es/work/sars-cov-2/index.html'],
   ['work/youtube-transcriber/index.html', 'es/work/youtube-transcriber/index.html'],
+  ['work/stackshot/index.html', 'es/work/stackshot/index.html'],
   ['work/finance-core/index.html', 'es/work/finance-core/index.html'],
   ['v1/index.html', 'v1/es/index.html'],
 ]
@@ -596,11 +600,11 @@ for (const page of EXPECTED.filter((page) => page.kind === 'v2')) {
   const cards = [...document.querySelectorAll('#work [data-project]')]
   const keys = cards.map((card) => card.dataset.project)
   assert(
-    keys.join(',') === 'youtube-transcriber,financial-architecture,sars-cov-2,portfolio',
-    `${page.path} presents each project once, ordered Transcriber, Finance, research and portfolio source`,
+    keys.join(',') === 'youtube-transcriber,stackshot,financial-architecture,sars-cov-2,portfolio',
+    `${page.path} presents each project once, ordered Transcriber, Stackshot, Finance, research and portfolio source`,
   )
   assert(
-    document.querySelectorAll('.project-slide').length === 3
+    document.querySelectorAll('.project-slide').length === 4
       && document.querySelector('.project-slide[data-project="financial-architecture"] .project-private-source')
       && !document.querySelector('.project-slide[data-project="financial-architecture"] a[href*="github.com"]')
       && !document.querySelector('#project-deck button, .project-deck-track')
@@ -623,7 +627,7 @@ for (const page of EXPECTED.filter((page) => page.kind === 'v2')) {
 }
 
 console.log('\n· Verified demonstration assets')
-for (const page of EXPECTED.filter(page => ['case', 'finance', 'transcriber'].includes(page.cluster))) {
+for (const page of EXPECTED.filter(page => ['case', 'finance', 'transcriber', 'stackshot'].includes(page.cluster))) {
   const { document } = parseHTML(read(page.file))
   const player = document.querySelector('#demo video')
   const downloads = [...document.querySelectorAll('#demo a[download]')]
@@ -832,6 +836,86 @@ for (const page of EXPECTED.filter((page) => page.cluster === 'transcriber')) {
     ['https://yt.rubenitx.me/', 'https://github.com/rubenitx/yt-transcriber-web', 'https://github.com/rubenitx/yt-transcriber-api']
       .every((href) => document.querySelector(`main a[href="${href}"]`)),
     `${page.path} exposes the live app and both evidence repositories`,
+  )
+}
+
+/*
+ * Stackshot is a desktop app: the carousel sends people to its website, not to
+ * an app that opens in the browser, and the case serves the same film as that
+ * website in the reader's language. The film is music only, so its captions
+ * describe what is on screen and both languages cover it from start to end.
+ */
+const STACKSHOT_FILM_SECONDS = 97.933
+for (const page of EXPECTED.filter((page) => page.kind === 'v2')) {
+  const { document } = parseHTML(read(page.file))
+  const slide = document.querySelector('.project-slide[data-project="stackshot"]')
+  const site = slide?.querySelector('.project-action-demo')
+  const repos = [...(slide?.querySelectorAll('.project-repo-link') ?? [])].map((link) => link.getAttribute('href'))
+  assert(
+    site?.getAttribute('href') === 'https://stackshot.rubenitx.me/'
+      && site.querySelector('strong')?.textContent.trim() === (page.lang === 'es' ? 'Sitio web' : 'Website')
+      && repos.join(',') === 'https://github.com/rubenitx/stackshot'
+      && slide.querySelector('.project-action-case')?.getAttribute('href') === `${page.lang === 'es' ? '/es' : ''}/work/stackshot/?from=project-carousel`,
+    `${page.path} features Stackshot with its website, its public repository and its case`,
+  )
+}
+for (const page of EXPECTED.filter((page) => page.cluster === 'stackshot')) {
+  const { document } = parseHTML(read(page.file))
+  for (const id of ['case-problem', 'case-decisions', 'case-limits', 'case-outcome', 'demo']) {
+    assert(Boolean(document.getElementById(id)), `${page.path} includes ${id} in static HTML`)
+  }
+  const article = document.querySelector('.stackshot-case')
+  assert(
+    article?.querySelector('h1')?.getAttribute('aria-label') === 'Stackshot'
+      && article.querySelector('h1').textContent.trim() === 'Stackshot'
+      && article.querySelectorAll('.case-letter').length === 4
+      && article.querySelector('.stackshot-signal[aria-hidden="true"]')
+      && article.querySelectorAll('.case-pipeline li').length === 3
+      && article.querySelectorAll('#case-decisions + div .case-decision').length === 6,
+    `${page.path} presents Stackshot with its own accessible editorial identity`,
+  )
+  const player = article?.querySelector('#demo video')
+  const film = `/media/stackshot-film-${page.lang}.mp4`
+  const poster = `/media/stackshot-film-${page.lang}-poster.jpg`
+  assert(
+    player?.getAttribute('preload') === 'none' && player.hasAttribute('controls')
+      && !player.hasAttribute('autoplay') && !player.hasAttribute('loop')
+      && player.querySelector('source')?.getAttribute('src') === film && player.getAttribute('poster') === poster
+      && existsSync(join(DIST, film)) && existsSync(join(DIST, poster)),
+    `${page.path} serves the ${page.lang} cut of the film on demand`,
+  )
+  const tracks = [...(player?.querySelectorAll('track') ?? [])]
+  assert(
+    tracks.length === 2 && tracks.every((track) => track.getAttribute('kind') === 'captions' && existsSync(join(DIST, track.getAttribute('src'))))
+      && tracks.filter((track) => track.hasAttribute('default')).length === 1
+      && tracks.find((track) => track.hasAttribute('default'))?.getAttribute('srclang') === page.lang,
+    `${page.path} offers both caption tracks with its own language selected`,
+  )
+  const text = article?.textContent ?? ''
+  assert(
+    ['C#', 'WinForms', 'WPF', 'FFmpeg', 'OCR', 'SHA-256', 'RSA-PSS', 'MIT', 'SmartScreen'].every((term) => text.includes(term))
+      && (page.lang === 'es' ? /castellano/.test(text) && /sintétic/.test(text) : /Spanish/.test(text) && /synthetic/.test(text)),
+    `${page.path} documents the real stack, its verification and its limits`,
+  )
+  assert(
+    ['https://stackshot.rubenitx.me/', 'https://github.com/rubenitx/stackshot']
+      .every((href) => document.querySelector(`main a[href="${href}"]`))
+      && !document.querySelector('a[href*="stackshot-web"]'),
+    `${page.path} exposes the website and the public repository, never the private website source`,
+  )
+}
+for (const language of ['en', 'es']) {
+  const subtitles = readFileSync(join(DIST, 'media', `stackshot-film.${language}.vtt`), 'utf8')
+  const times = [...subtitles.matchAll(/(\d{2}):(\d{2}):(\d{2}\.\d{3}) --> (\d{2}):(\d{2}):(\d{2}\.\d{3})/g)]
+    .map(match => ({
+      start: Number(match[1]) * 3600 + Number(match[2]) * 60 + Number(match[3]),
+      end: Number(match[4]) * 3600 + Number(match[5]) * 60 + Number(match[6]),
+    }))
+  assert(
+    subtitles.startsWith('WEBVTT') && times.length > 0 && times[0].start === 0
+      && Math.abs(times.at(-1).end - STACKSHOT_FILM_SECONDS) < 0.001
+      && times.every((cue, index) => cue.start < cue.end && (!index || cue.start >= times[index - 1].end)),
+    `stackshot-film ${language} captions cover the film with ordered, valid cue times`,
   )
 }
 
