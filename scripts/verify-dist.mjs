@@ -852,7 +852,7 @@ for (const page of EXPECTED.filter((page) => page.kind === 'v2')) {
   const site = slide?.querySelector('.project-action-demo')
   const repos = [...(slide?.querySelectorAll('.project-repo-link') ?? [])].map((link) => link.getAttribute('href'))
   assert(
-    site?.getAttribute('href') === 'https://stackshot.rubenitx.me/'
+    site?.getAttribute('href') === (page.lang === 'es' ? 'https://stackshot.rubenitx.me/' : 'https://stackshot.rubenitx.me/en/')
       && site.querySelector('strong')?.textContent.trim() === (page.lang === 'es' ? 'Sitio web' : 'Website')
       && repos.join(',') === 'https://github.com/rubenitx/stackshot'
       && slide.querySelector('.project-action-case')?.getAttribute('href') === `${page.lang === 'es' ? '/es' : ''}/work/stackshot/?from=project-carousel`,
@@ -898,7 +898,7 @@ for (const page of EXPECTED.filter((page) => page.cluster === 'stackshot')) {
     `${page.path} documents the real stack, its verification and its limits`,
   )
   assert(
-    ['https://stackshot.rubenitx.me/', 'https://github.com/rubenitx/stackshot']
+    [page.lang === 'es' ? 'https://stackshot.rubenitx.me/' : 'https://stackshot.rubenitx.me/en/', 'https://github.com/rubenitx/stackshot']
       .every((href) => document.querySelector(`main a[href="${href}"]`))
       && !document.querySelector('a[href*="stackshot-web"]'),
     `${page.path} exposes the website and the public repository, never the private website source`,

@@ -281,7 +281,7 @@
     "inCv": false,
     "tech": ["C#", ".NET Framework", "WinForms", "WPF", "FFmpeg", "Windows OCR"],
     "domains": [],
-    "link": "https://stackshot.rubenitx.me/",
+    "link": "https://stackshot.rubenitx.me/en/",
     "linkKind": "site",
     "github": [
       { "label": "App", "href": "https://github.com/rubenitx/stackshot" }
